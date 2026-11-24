@@ -11,7 +11,3 @@ engine loads at runtime, without any code changes.
 | `vital-signs/` | Assessment | Vital signs validity assessment for clinical data |
 | `car-diagnosis/` | Diagnosis (Causal Covering) | Fault diagnosis for automotive systems |
 | `server-monitoring/` | Monitoring | Threshold-based monitoring for server metrics |
-
-## Running examples
-
-See `bin/run-example.sh` for a shell script that invokes the CLI against a domain.
