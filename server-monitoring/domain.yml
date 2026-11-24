@@ -1,0 +1,23 @@
+name: Server Health Monitoring
+task: monitoring
+psm: data-driven-monitoring
+input:
+  type: object
+  properties:
+    historicalData:
+      type: array
+    currentMetrics:
+      type: object
+output:
+  type: object
+  properties:
+    verdict:
+      type: string
+      enum: [Normal, Warning, Breach]
+    deviations:
+      type: array
+knowledge:
+  ontologyPath: ontology/server-domain.yml
+  normsPath: norms.yml
+  abstractionPath: abstraction.md
+  tolerancePath: tolerance.md

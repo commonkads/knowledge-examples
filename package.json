@@ -1,0 +1,6 @@
+{
+  "name": "@commonkads/knowledge-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example knowledge domains for the CommonKADS engine"
+}

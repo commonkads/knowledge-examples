@@ -1,0 +1,79 @@
+# Car Domain Ontology
+
+systems:
+  - name: Electrical
+    description: Battery, starter motor, alternator, ignition system, and fuses.
+    components: [battery, starter_motor, alternator, ignition_coil, spark_plugs, fuses, wiring]
+
+  - name: Fuel
+    description: Fuel storage, delivery, and injection.
+    components: [fuel_pump, fuel_injectors, fuel_filter, fuel_pressure_regulator, fuel_tank]
+
+  - name: Engine
+    description: Internal combustion engine core and ancillary systems.
+    components:
+      [
+        crankshaft,
+        pistons,
+        valves,
+        camshaft,
+        timing_belt,
+        mass_airflow_sensor,
+        vacuum_lines,
+        throttle_body,
+      ]
+
+  - name: Cooling
+    description: Engine temperature regulation.
+    components: [radiator, thermostat, water_pump, coolant, cooling_fan, temperature_sensor]
+
+  - name: Transmission
+    description: Gearbox and drivetrain.
+    components: [clutch, gearbox, torque_converter, differential]
+
+symptoms:
+  - name: NoStart_NoCrank
+    description: >
+      Turning the key or pressing start produces silence or a single click.
+      The engine does not attempt to turn over. Usually indicates an electrical
+      supply or starter motor fault.
+
+  - name: NoStart_Cranks
+    description: >
+      The starter motor turns the engine over normally (cranking sound present)
+      but the engine does not fire and run. Usually indicates a fuel, ignition,
+      or sensor fault.
+
+  - name: Stalling
+    description: >
+      Engine shuts off unexpectedly while running, at idle, or when slowing down.
+      Often relates to fuel supply, air/fuel mixture, or sensor faults.
+
+  - name: RoughIdle
+    description: >
+      Engine runs unevenly at idle — vibrating, hunting, or misfiring.
+      May indicate a vacuum leak, fouled plugs, or sensor fault.
+
+  - name: PoorAcceleration
+    description: >
+      Engine hesitates or lacks power when accelerating.
+      May indicate fuel delivery, air intake, or ignition issues.
+
+  - name: Overheating
+    description: >
+      Engine temperature gauge rises into the red zone or a temperature
+      warning light illuminates. Indicates a cooling system fault.
+
+  - name: CheckEngineLight
+    description: >
+      Malfunction indicator lamp (MIL) is illuminated. Confirms a stored
+      diagnostic trouble code (DTC) — specific fault must be read with an OBD-II
+      scanner to narrow down.
+
+relationships:
+  - Electrical faults cause NoStart_NoCrank when the battery or starter cannot supply cranking power.
+  - Fuel faults cause NoStart_Cranks because the engine cranks but receives no fuel.
+  - Ignition faults cause NoStart_Cranks because fuel cannot ignite without a spark.
+  - Vacuum leaks cause Stalling and RoughIdle by allowing unmetered air into the intake.
+  - Cooling faults cause Overheating independently of fuel and ignition systems.
+  - Sensor faults often trigger CheckEngineLight and may cause Stalling or PoorAcceleration.

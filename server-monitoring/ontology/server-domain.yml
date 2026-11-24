@@ -1,0 +1,60 @@
+# Server Health Domain Ontology
+
+metrics:
+  - name: CpuUsagePercent
+    description: Percentage of CPU time consumed across all cores over the observation window.
+    unit: percent
+    normal_range: 0–70
+
+  - name: MemoryUsagePercent
+    description: Percentage of total RAM in use (excluding kernel caches and buffers).
+    unit: percent
+    normal_range: 0–80
+
+  - name: DiskUsagePercent
+    description: Percentage of disk capacity used on the primary volume.
+    unit: percent
+    normal_range: 0–80
+
+  - name: DiskIoWaitPercent
+    description: >
+      Percentage of CPU time spent waiting for disk I/O to complete.
+      A high value indicates the disk is a bottleneck.
+    unit: percent
+    normal_range: 0–10
+
+  - name: NetworkRxMbps
+    description: Inbound network throughput in megabits per second.
+    unit: Mbps
+
+  - name: NetworkTxMbps
+    description: Outbound network throughput in megabits per second.
+    unit: Mbps
+
+  - name: HttpErrorRatePercent
+    description: >
+      Percentage of HTTP responses with 5xx status codes over the observation window.
+      A non-zero value indicates application or infrastructure errors.
+    unit: percent
+    normal_range: 0–1
+
+  - name: HttpP99LatencyMs
+    description: >
+      99th-percentile HTTP response latency in milliseconds.
+      Captures the worst-case experience for end users.
+    unit: ms
+    normal_range: 0–500
+
+  - name: LoadAverage1m
+    description: >
+      Unix load average over the last 1 minute. Represents the number of processes
+      waiting for CPU or I/O. Compare against the number of CPU cores; a value
+      above the core count indicates saturation.
+    unit: processes
+
+concepts:
+  - CPU saturation occurs when CpuUsagePercent is sustained above 85% or LoadAverage1m exceeds core count.
+  - Memory pressure occurs when MemoryUsagePercent exceeds 90% and swap usage increases.
+  - Disk saturation occurs when DiskUsagePercent exceeds 90% or DiskIoWaitPercent exceeds 20%.
+  - Latency degradation is indicated by HttpP99LatencyMs above 1000ms or error rate above 2%.
+  - Network saturation occurs when throughput approaches the provisioned link capacity.

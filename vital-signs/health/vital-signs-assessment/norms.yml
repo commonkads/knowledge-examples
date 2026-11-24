@@ -1,0 +1,52 @@
+# Vital Signs Assessment - Norms
+#
+# Illustrative, reduced rule set chosen to exercise every mechanism the
+# Assessment PSM supports: patient-type-conditional skip,
+# pregnancy-conditional skip, and previous-reading-conditional skip. Not a
+# substitute for real clinical guidelines.
+
+norms:
+  - name: Vitals Data Complete
+    fieldName: VitalsDataIncomplete
+    type: boolean
+    condition: 'VitalsDataIncomplete must be false or absent'
+
+  - name: Oxygen Saturation Reported
+    fieldName: OxygenSaturation
+    type: number
+    condition: 'OxygenSaturation must not be null'
+
+  - name: Heart Rate Within Bounds
+    fieldName: HeartRate
+    type: number
+    condition: 'HeartRate must be between 40 and 180'
+
+  - name: Pediatric Heart Rate Within Bounds
+    fieldName: HeartRate
+    type: number
+    condition: 'HeartRate must be between 70 and 120'
+    skipWhen: 'PatientType is not Pediatric'
+
+  - name: Pregnancy Blood Pressure Threshold
+    fieldName: BloodPressureSystolic
+    type: number
+    condition: 'BloodPressureSystolic must be less than 140 (preeclampsia risk threshold)'
+    skipWhen: 'IsPregnant is not true'
+
+  - name: Respiratory Rate Within Tolerance
+    fieldName: RespiratoryRate
+    type: number
+    condition: 'RespiratoryRate must be no greater than 24'
+    skipWhen: 'PatientType is Pediatric'
+
+  - name: Heart Rate Trend Stable
+    fieldName: HeartRate
+    type: number
+    condition: 'HeartRate must not deviate by more than 20 from PreviousVitals.HeartRate'
+    skipWhen: 'no PreviousVitals was supplied'
+
+  - name: Temperature Deviation Within Bounds
+    fieldName: TemperatureDeviationFromNormal
+    type: number
+    condition: 'TemperatureDeviationFromNormal must be no greater than 1.5'
+    skipWhen: 'Temperature is null (deviation cannot be derived)'

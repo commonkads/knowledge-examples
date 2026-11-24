@@ -1,0 +1,39 @@
+# Shared health domain ontology - illustrative subset covering only the
+# VitalSigns entity needed by the vital signs assessment example.
+entities:
+  VitalSigns:
+    description: >
+      A single set of vital sign observations for a patient, submitted for
+      clinical validity assessment.
+    fields:
+      PatientType:
+        type: enum
+        values: [Adult, Pediatric]
+        description: Age category used to select the applicable reference ranges.
+      HeartRate:
+        type: number
+        description: Beats per minute.
+      BloodPressureSystolic:
+        type: number
+        description: Systolic blood pressure, mmHg.
+      RespiratoryRate:
+        type: number
+        description: Breaths per minute.
+      Temperature:
+        type: number
+        nullable: true
+        description: Body temperature, degrees Celsius.
+      OxygenSaturation:
+        type: number
+        nullable: true
+        description: Peripheral oxygen saturation (SpO2), percent.
+      IsPregnant:
+        type: boolean
+        description: Whether the patient is currently pregnant.
+      VitalsDataIncomplete:
+        type: boolean
+        description: Flag set by upstream ingestion when the reading fails structural checks.
+      PreviousVitals:
+        type: VitalSigns
+        nullable: true
+        description: The most recently recorded reading for the same patient, if any.

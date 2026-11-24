@@ -1,0 +1,39 @@
+name: Vital Signs Assessment
+task: assessment
+psm: assessment-with-abstraction
+input:
+  type: object
+  required: [PatientType, HeartRate, BloodPressureSystolic, RespiratoryRate, OxygenSaturation]
+  properties:
+    PatientType:
+      type: string
+    HeartRate:
+      type: number
+    BloodPressureSystolic:
+      type: number
+    RespiratoryRate:
+      type: number
+    Temperature:
+      type: number
+    OxygenSaturation:
+      type: number
+    IsPregnant:
+      type: boolean
+    VitalsDataIncomplete:
+      type: boolean
+output:
+  type: object
+  properties:
+    verdict:
+      type: string
+      enum: [Pass, Review]
+    passed:
+      type: array
+    failed:
+      type: array
+knowledge:
+  ontologyPath: ontology/health-domain.yml
+  normsPath: health/vital-signs-assessment/norms.yml
+  abstractionPath: health/vital-signs-assessment/abstraction.md
+  evaluationPath: health/vital-signs-assessment/evaluation.md
+  selectionPath: health/vital-signs-assessment/selection.md

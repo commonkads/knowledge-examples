@@ -1,0 +1,27 @@
+name: Car Fault Diagnosis
+task: diagnosis
+psm: causal-covering
+input:
+  type: object
+  properties:
+    complaint:
+      type: string
+    symptoms:
+      type: array
+output:
+  type: object
+  properties:
+    verdict:
+      type: string
+      enum: [Healthy, Fault]
+    confirmed:
+      type: array
+    refuted:
+      type: array
+    unverified:
+      type: array
+knowledge:
+  ontologyPath: ontology/car-domain.yml
+  normsPath: hypotheses.yml
+  abstractionPath: abstraction.md
+  faultModelPath: fault-model.md

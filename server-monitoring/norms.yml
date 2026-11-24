@@ -1,0 +1,45 @@
+# Server Health Norms
+# Thresholds used by the compare step to evaluate observed metric values.
+
+norms:
+  - metric: CpuUsagePercent
+    warning_threshold: 70
+    breach_threshold: 85
+    unit: percent
+    note: Sustained CPU above 85% starves other processes and degrades response times.
+
+  - metric: MemoryUsagePercent
+    warning_threshold: 80
+    breach_threshold: 90
+    unit: percent
+    note: Above 90% the OS begins swapping aggressively, causing significant latency.
+
+  - metric: DiskUsagePercent
+    warning_threshold: 80
+    breach_threshold: 90
+    unit: percent
+    note: Above 90% log rotation and writes may fail; application errors follow quickly.
+
+  - metric: DiskIoWaitPercent
+    warning_threshold: 10
+    breach_threshold: 20
+    unit: percent
+    note: High iowait indicates disk throughput is a bottleneck for the whole system.
+
+  - metric: HttpErrorRatePercent
+    warning_threshold: 1
+    breach_threshold: 5
+    unit: percent
+    note: Any non-zero error rate is significant; above 5% indicates a service impairment.
+
+  - metric: HttpP99LatencyMs
+    warning_threshold: 500
+    breach_threshold: 1000
+    unit: ms
+    note: P99 latency above 1000ms is user-visible degradation for most web applications.
+
+  - metric: LoadAverage1m
+    warning_threshold: cpu_cores # evaluated relative to core count in abstraction
+    breach_threshold: 2x_cpu_cores
+    unit: processes
+    note: Load above core count means processes are queuing for CPU or I/O.

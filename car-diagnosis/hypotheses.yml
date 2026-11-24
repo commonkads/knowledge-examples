@@ -1,0 +1,47 @@
+# Candidate fault hypotheses for car diagnosis.
+# The hypothesise step passes this file verbatim into the verify prompt as the
+# list of faults to evaluate against the observed symptoms.
+
+hypotheses:
+  - name: Dead or Discharged Battery
+    typical_symptoms: [NoStart_NoCrank, no interior lights or very dim, no sound on key turn]
+    system: Electrical
+
+  - name: Faulty Starter Motor
+    typical_symptoms: [NoStart_NoCrank, single loud click on key turn, lights remain bright]
+    system: Electrical
+
+  - name: Failed Fuel Pump
+    typical_symptoms: [NoStart_Cranks, engine cranks normally but does not fire, no fuel pressure]
+    system: Fuel
+
+  - name: Fouled or Failed Spark Plugs
+    typical_symptoms:
+      [NoStart_Cranks, RoughIdle, PoorAcceleration, misfires on one or more cylinders]
+    system: Electrical
+
+  - name: Faulty Ignition Coil
+    typical_symptoms: [NoStart_Cranks, RoughIdle, single-cylinder misfire, CheckEngineLight]
+    system: Electrical
+
+  - name: Clogged Fuel Injector
+    typical_symptoms: [RoughIdle, PoorAcceleration, Stalling, engine stumbles under load]
+    system: Fuel
+
+  - name: Vacuum Leak
+    typical_symptoms: [RoughIdle, Stalling at idle, PoorAcceleration, hissing sound from engine bay]
+    system: Engine
+
+  - name: Faulty Mass Airflow Sensor
+    typical_symptoms:
+      [RoughIdle, Stalling, PoorAcceleration, CheckEngineLight, black smoke from exhaust]
+    system: Engine
+
+  - name: Low Coolant or Coolant Leak
+    typical_symptoms: [Overheating, coolant warning light, visible coolant puddle under car]
+    system: Cooling
+
+  - name: Faulty Thermostat
+    typical_symptoms:
+      [Overheating, temperature rises quickly then stabilises at high level, slow warm-up]
+    system: Cooling
