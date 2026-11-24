@@ -2,5 +2,11 @@
   "name": "@commonkads/knowledge-examples",
   "version": "1.0.0",
   "private": true,
-  "description": "Example knowledge domains for the CommonKADS engine"
+  "description": "Example knowledge domains for the CommonKADS engine",
+  "devDependencies": {
+    "@robproper/feature-workflow": "latest"
+  },
+  "allowScripts": {
+    "@robproper/feature-workflow": true
+  }
 }
