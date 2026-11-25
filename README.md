@@ -8,6 +8,6 @@ engine loads at runtime, without any code changes.
 
 | Domain | PSM | Description |
 |---|---|---|
-| `vital-signs/` | Assessment | Vital signs validity assessment for clinical data |
-| `car-diagnosis/` | Diagnosis (Causal Covering) | Fault diagnosis for automotive systems |
-| `server-monitoring/` | Monitoring | Threshold-based monitoring for server metrics |
+| `knowledge/vital-signs/` | Assessment | Vital signs validity assessment for clinical data |
+| `knowledge/car-diagnosis/` | Diagnosis (Causal Covering) | Fault diagnosis for automotive systems |
+| `knowledge/server-monitoring/` | Monitoring | Threshold-based monitoring for server metrics |
