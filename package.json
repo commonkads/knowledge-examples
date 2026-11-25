@@ -1,12 +1,18 @@
 {
   "name": "@commonkads/knowledge-examples",
   "version": "1.0.0",
-  "private": true,
   "description": "Example knowledge domains for the CommonKADS engine",
+  "files": [
+    "knowledge"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "devDependencies": {
-    "@robproper/feature-workflow": "latest"
+    "@commonkads/dev-workflow": "latest"
   },
   "allowScripts": {
-    "@robproper/feature-workflow": true
+    "@commonkads/dev-workflow": true
   }
 }
