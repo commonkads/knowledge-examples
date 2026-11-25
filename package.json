@@ -9,7 +9,11 @@
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
+  "scripts": {
+    "release": "changeset publish"
+  },
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@commonkads/dev-workflow": "latest"
   },
   "allowScripts": {
